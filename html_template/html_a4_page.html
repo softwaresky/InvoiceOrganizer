@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Page A4</title>
+</head>
+<style type="text/css" media="all">
+
+body {
+  background: white;
+
+}
+
+table {
+    font-size: 11pt;
+    border-collapse: collapse;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.img_stamp {
+    margin-top: 1cm;
+    margin-left: 1cm;
+}
+
+.A4 {
+  background: white;
+  width: 21cm;
+  height: 29.7cm;
+  display: block;
+  margin: 0 auto;
+  padding: 0.5cm;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+@media print {
+  .page-break {
+    display: block;
+    page-break-before: always;
+  }
+
+  size: A4 portrait;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .A4 {
+    box-shadow: none;
+    margin: 0;
+    width: auto;
+    height: auto;
+  }
+
+  .noprint {
+    display: none;
+  }
+
+  .enable-print {
+    display: block;
+  }
+}
+
+</style>
+<body>
+
+<div class="A4">
+    {page_content}
+</div>
+
+</body>
+</html>
