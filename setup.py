@@ -13,7 +13,7 @@ def make_build(script_target=""):
                           (os.path.abspath("./html_template/html_a4_page.html"), "html_template/html_a4_page.html")],
         "excludes": ["Tkinter", "Tkconstants", "tcl", ],
         "includes": ["lib.DbLib"],
-        "build_exe": "./build_script/InvoiceOrganizer-32"
+        "build_exe": "./build_script/InvoiceOrganizer-x64-win"
     }
 
     executable = [
