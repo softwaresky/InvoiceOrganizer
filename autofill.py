@@ -1,6 +1,7 @@
 from lib import DbLib
+import os
 
-FILE_DB = find_data_file("./db/InvoiceOrganizer.db")
+FILE_DB = os.path.abspath("./db/InvoiceOrganizer.db")
 
 def auto_fill():
     import random
@@ -27,12 +28,22 @@ def auto_fill():
 
     api_db = DbLib.SmetKnigaDB(FILE_DB)
 
+    api_db.remove_all_row("firma")
+    api_db.remove_all_row("faktura")
+    api_db.remove_all_row("lista_na_firmi")
+
+    api_db.insert_firma("Firma 1")
+    dict_firma = api_db.get_last_record("firma")
+
+    api_db.insert_druga_firma("Druga Firma 1")
+    dict_druga_firma = api_db.get_last_record("lista_na_firmi")
+
     for i in range(100):
         dict_kwargs = {}
 
-        dict_kwargs["firma_id"] = 16
+        dict_kwargs["firma_id"] = dict_firma["id"]
         dict_kwargs["reden_broj"] = i + 1
-        dict_kwargs["druga_firma_id"] = 1
+        dict_kwargs["druga_firma_id"] = dict_druga_firma["id"]
         dict_kwargs["iznos"] = random.randrange(0, 100000)
         tip_faktura_id = random.randint(1, 2)
         dict_kwargs["tip_faktura_id"] = tip_faktura_id
@@ -55,4 +66,4 @@ def auto_fill():
 
         api_db.insert_faktura(**dict_kwargs)
 
-# auto_fill()
+auto_fill()
